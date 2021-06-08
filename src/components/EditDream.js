@@ -5,7 +5,6 @@ import {Form, Button, Col, Spinner} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import moment from 'moment';
 
-
 export default class EditDream extends Component {
   state = {
       description: '',
@@ -86,7 +85,7 @@ export default class EditDream extends Component {
             <Form.Row>
             <Form.Group controlId="date">
                 <Form.Label>Date of dream</Form.Label>
-                <Form.Control type="date" name="date" defaultValue={this.state.date} placeholder="Date of dream" onChange={this.handleChange} required/>
+                <Form.Control type="date" name="date" defaultValue={this.state.date} max={moment(Date.now()).format("yyyy-MM-DD")} placeholder="Date of dream" onChange={this.handleChange} required/>
                 <Form.Text muted>
                   Pick the date of the night you went to sleep.
                 </Form.Text>

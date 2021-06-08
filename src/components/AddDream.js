@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import db from '../firebase/db';
 import {Form, Button, Col} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
+import moment from 'moment';
+import firebase from 'firebase';
 
 export default class AddDream extends Component {
   state = {
@@ -29,13 +31,17 @@ export default class AddDream extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const date = new Date(this.state.date);
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+    let timestamp = firebase.firestore.Timestamp.fromDate(date);
     db
     .collection("dreamEntries")
       .add({
-        ...this.state
+        ...this.state,
+        date: timestamp
       })
       .then((docRef) => {
-        this.props.history.push('/')
+        this.props.history.push('/dreams')
       })
       .catch((error) => {
         console.error("Error writing document: ", error);
@@ -50,7 +56,7 @@ export default class AddDream extends Component {
             <Form.Row>
             <Form.Group controlId="date">
                 <Form.Label>Date of dream</Form.Label>
-                <Form.Control type="date" name="date" placeholder="Date of dream" onChange={this.handleChange} required/>
+                <Form.Control type="date" name="date" placeholder="Date of dream" max={moment(Date.now()).format("yyyy-MM-DD")} onChange={this.handleChange} required/>
                 <Form.Text muted>
                   Pick the date of the night you went to sleep.
                 </Form.Text>

@@ -13,7 +13,7 @@ export default class Navigation extends Component {
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/dreams">All Dreams</Nav.Link>
               <Nav.Link as={Link} to="/add-dream">Add a Dream</Nav.Link>
-              <Nav.Link as={Link} to="/data">View Data Breakdown</Nav.Link>
+              {/* <Nav.Link as={Link} to="/data">View Data Breakdown</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

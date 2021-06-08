@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'react-bootstrap';
 import moment from 'moment';
+import PropTypes from 'prop-types'
 
 export default class DreamTable extends Component {
   render() {
@@ -14,7 +15,7 @@ export default class DreamTable extends Component {
           <td>
             <div style={{backgroundColor:`${dream.dreamColor}`,borderRadius:'50%',width:'15px',height:'15px',margin:'0 auto'}}></div>
           </td>
-        </tr>
+        </tr>       
       )
     })
     return (
@@ -33,4 +34,8 @@ export default class DreamTable extends Component {
       </Table>
     )
   }
+}
+
+DreamTable.propTypes = {
+  dreams: PropTypes.array.isRequired
 }

@@ -14,7 +14,7 @@ export default class Dreams extends Component {
   componentDidMount(){
     this.unsubscribe = db
           .collection("dreamEntries")
-          .orderBy('date', 'asc')
+          .orderBy('date', 'desc')
           .onSnapshot((data) => {
             const dreamEntries = data.docs.map(doc => {
               return {
@@ -61,7 +61,13 @@ export default class Dreams extends Component {
   render() {
     let dreams = this.state.dreams.map(dream => {
       return (
-        <CompressedDream key={dream.id} dream={dream} toggleShowWarning={this.toggleShowWarning} showWarning={this.state.showWarning} handleDelete={this.handleDelete}/>
+        <CompressedDream 
+          key={dream.id} 
+          dream={dream} 
+          toggleShowWarning={this.toggleShowWarning} 
+          showWarning={this.state.showWarning} 
+          handleDelete={this.handleDelete}            
+        />
       )
     })
 

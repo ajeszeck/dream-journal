@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Card, Container, Button, Modal, Table} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import PropTypes from 'prop-types' 
 
 export default class CompressedDream extends Component {
 
@@ -57,7 +58,6 @@ export default class CompressedDream extends Component {
               </tbody>
             </Table>
           <Card.Footer className="compressed-cart-buttons">
-            <Button variant="primary">View Details</Button>
             <Button variant="warning" as={Link} to={`/dreams/${this.props.dream.id}`}>Edit Dream</Button>
             <Button variant="danger" onClick={this.props.toggleShowWarning}>Delete Dream</Button>  
           </Card.Footer>
@@ -79,4 +79,10 @@ export default class CompressedDream extends Component {
       </Container>
     )
   }
+}
+
+CompressedDream.propTypes = {
+  dream: PropTypes.object.isRequired,
+  toggleShowWarning: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired
 }
