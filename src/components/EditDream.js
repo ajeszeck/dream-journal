@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import db from '../firebase/db';
+// import db from '../firebase/db';
 import firebase from 'firebase';
 import {Form, Button, Col, Spinner} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import moment from 'moment';
+const db = firebase.firestore();
 
 export default class EditDream extends Component {
   state = {

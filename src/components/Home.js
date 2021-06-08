@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import {Spinner, Button, Container, Row, Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import DreamTable from './DreamTable';
-import db from '../firebase/db';
+//import db from '../firebase/db';
+import firebase from 'firebase';
+const db = firebase.firestore();
 
 export default class Home extends Component {
   state = {
