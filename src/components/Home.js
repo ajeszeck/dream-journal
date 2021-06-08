@@ -13,7 +13,7 @@ export default class Home extends Component {
   componentDidMount(){
     this.unsubscribe = db
       .collection("dreamEntries")
-      .orderBy('date', 'asc')
+      .orderBy('date', 'desc')
       .onSnapshot((data) => {
         const dreamEntries = data.docs.map(doc => {
           return {

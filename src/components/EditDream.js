@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import db from '../firebase/db';
+import firebase from 'firebase';
 import {Form, Button, Col, Spinner} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import moment from 'moment';
@@ -28,7 +29,7 @@ export default class EditDream extends Component {
       .then(doc => {
         if (doc.exists) {
           const {description, kindOfDream, beforeBedMood, wakeUpMood, restedState, dreamColor, date, notes } = doc.data();
-          const formattedDate = moment(date.toDate()).format("YYYY-MM-DD");
+          const formattedDate = moment(date.toDate()).format("yyyy-MM-DD");
           this.setState({
             description,
             kindOfDream,
@@ -47,9 +48,6 @@ export default class EditDream extends Component {
   handleChange = (event) => {
     let value = event.target.value;
 
-    if (event.target.id === "date") {
-      value = new Date(event.target.value);
-    }
     this.setState({
       ...this.state,
       [event.target.id]: value
@@ -59,14 +57,17 @@ export default class EditDream extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { id } = this.props.match.params;
+    const date = new Date(this.state.date);
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+    let timestamp = firebase.firestore.Timestamp.fromDate(date);
     db
     .collection("dreamEntries")
     .doc(id)
       .set({
-        ...this.state
+        ...this.state,
+        date: timestamp
       }, {merge: true})
       .then((docRef) => {
-        console.log("Document successfully updated!");
         this.props.history.push('/dreams')
       })
       .catch((error) => {
