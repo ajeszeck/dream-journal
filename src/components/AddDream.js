@@ -29,15 +29,12 @@ export default class AddDream extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submitted")
-    console.log(this.state)
     db
     .collection("dreamEntries")
       .add({
         ...this.state
       })
       .then((docRef) => {
-        console.log("Document successfully written! ID: ", docRef.id);
         this.props.history.push('/')
       })
       .catch((error) => {

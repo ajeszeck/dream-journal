@@ -6,7 +6,7 @@ export default class Navigation extends Component {
   render() {
     return (
       <Navbar bg="light" expand="lg">
-        <NavbarBrand href="/">Dreamly</NavbarBrand>
+        <NavbarBrand href="/">DreamMe</NavbarBrand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

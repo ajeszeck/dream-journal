@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import {Card, Container, Button, Col, Modal} from 'react-bootstrap';
-import Accordion from 'react-bootstrap/Accordion';
+import {Card, Container, Button, Modal, Table} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
@@ -12,42 +11,56 @@ export default class CompressedDream extends Component {
     return (
       <Container className="compressed-dream-container">
         <Card>
-            <Container className="compressed-dream-header">
-              <div
-                style={{
-                  backgroundColor:`${this.props.dream.dreamColor}`,
-                  width:'30px',
-                  height:'30px',
-                  margin:'0 auto',
-                  padding: '0'}}></div>
-              <h5>{date.format("MMMM Do, YYYY")}</h5>
-            </Container>
-          <Card.Body>
-
-              <Col>
-
-              </Col>
-              
-          </Card.Body>
-          <Accordion defaultActiveKey="0">          
-            <Accordion.Toggle as={Card.Header} eventKey="0">
-              Description
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body>{this.props.dream.description}</Card.Body>
-            </Accordion.Collapse>
-            <Accordion.Toggle as={Card.Header} eventKey="1">
-              Additional Notes
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="1">
-              <Card.Body>{this.props.dream.notes}</Card.Body>
-            </Accordion.Collapse>
-          </Accordion>
-          <Card.Body className="compressed-cart-buttons">
-            <Button variant="outline-primary">View Details</Button>
-            <Button variant="outline-warning" as={Link} to={`/dreams/${this.props.dream.id}`}>Edit Dream</Button>
-            <Button variant="outline-danger" onClick={this.props.toggleShowWarning}>Delete Dream</Button>  
-          </Card.Body>
+            <Card.Header>
+              <Card.Title>
+                {date.format("MMMM Do, YYYY")}
+              </Card.Title>
+            </Card.Header>
+            <Table bordered striped hover variant="light" className="compressed-dream-table">
+              <tbody>
+                <tr>
+                  <td>Description</td>
+                  <td>{this.props.dream.description}</td>
+                </tr>
+                <tr>
+                  <td>Notes</td>
+                  <td>{this.props.dream.notes}</td>
+                </tr>
+                <tr>
+                  <td>How did you feel before going to bed?</td>
+                  <td>{this.props.dream.beforeBedMood}</td>
+                </tr>
+                <tr>
+                  <td>What kind of dream was it?</td>
+                  <td>{this.props.dream.kindOfDream}</td>
+                </tr>
+                <tr>
+                  <td>How did you feel when you woke up?</td>
+                  <td>{this.props.dream.wakeUpMood}</td>
+                </tr>
+                <tr>
+                  <td>How rested did you feel when you woke up?</td>
+                  <td>{this.props.dream.restedState}</td>
+                </tr>
+                <tr>
+                  <td>This is the color you felt represented this dream:</td>
+                  <td>
+                  <div
+                    style={{
+                      backgroundColor:`${this.props.dream.dreamColor}`,
+                      width:'30px',
+                      height:'30px',
+                      borderRadius: '50%',
+                      padding: '0'}}></div>
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
+          <Card.Footer className="compressed-cart-buttons">
+            <Button variant="primary">View Details</Button>
+            <Button variant="warning" as={Link} to={`/dreams/${this.props.dream.id}`}>Edit Dream</Button>
+            <Button variant="danger" onClick={this.props.toggleShowWarning}>Delete Dream</Button>  
+          </Card.Footer>
         </Card>
         <Modal show={this.props.showWarning} onHide={this.props.toggleShowWarning} animation={true}>
           <Modal.Header closeButton>

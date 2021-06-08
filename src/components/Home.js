@@ -48,7 +48,6 @@ export default class Home extends Component {
               <Col lg={10}>
                 <h3>Recent Dreams</h3>
                 <DreamTable dreams={this.state.dreams} />  
-                <Button variant="outline-secondary" as={Link} to={"/dreams"}>All dreams</Button>
               </Col>  
             )
           }
@@ -60,8 +59,8 @@ export default class Home extends Component {
             )
           }           
           <Col>
-            <Button variant="outline-secondary"  as={Link} to={"/add-dream"}>Add a dream</Button>          
-            <Button variant="outline-secondary"  as={Link} to={"/dreams"}>All dreams</Button>
+            <Button className="button" variant="outline-secondary"  as={Link} to={"/add-dream"}>Add a dream</Button>          
+            <Button className="button" variant="outline-secondary"  as={Link} to={"/dreams"}>All dreams</Button>
           </Col>
         </Row>    
       </Container>

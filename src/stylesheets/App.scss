@@ -48,16 +48,19 @@
   color: #9a9a9b;
 }
 
-.compressed-dream-container {
-  padding: 1rem 0 1rem 0;
-  
+.button {
+  margin: 1rem;
 }
 
-.compressed-dream-header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+.compressed-dream-container {
   padding: 1rem 0 0 0;
+  margin: 0 0 1rem 0;
+  .compressed-dream-table {
+    margin: 0;
+    td {
+      width: 50%;
+    }
+  }
 }
 
 .compressed-cart-buttons {
@@ -66,4 +69,4 @@
   button {
     margin: 0 0.5rem 0 0.5rem;
   }
-}
+} 
