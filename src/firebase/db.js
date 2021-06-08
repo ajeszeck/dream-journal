@@ -1,5 +1,5 @@
 import firebase from 'firebase';
 
-const db = firebase.firestore().settings({ experimentalForceLongPolling: true });;
+const db = firebase.firestore();
 
 export default db;
