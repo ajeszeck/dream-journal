@@ -1,4 +1,4 @@
-# Week 7 Assignment
+# Final Project
 
 ## The name of your project
 Dreamly (*Name may change*) Dream Journal
