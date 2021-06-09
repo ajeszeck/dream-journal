@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import CompressedDream from './CompressedDream';
 import Container from 'react-bootstrap/Container';
 import {Spinner} from 'react-bootstrap';
-// import db from '../firebase/db';
 import firebase from 'firebase';
 const db = firebase.firestore();
-firebase.firestore.setLogLevel("debug");
 
 export default class Dreams extends Component {
   state = {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import db from '../firebase/db';
 import firebase from 'firebase';
 import {Form, Button, Col, Spinner} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';

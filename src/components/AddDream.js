@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-//import db from '../firebase/db';
 import {Form, Button, Col} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import moment from 'moment';
 import firebase from 'firebase';
 const db = firebase.firestore();
-firebase.firestore.setLogLevel("debug");
 
 export default class AddDream extends Component {
   state = {
