@@ -39,7 +39,6 @@ export default class Dreams extends Component {
 
   handleDelete = (id) => {
     return () => {
-      console.log(id);
       db
         .collection("dreamEntries")
         .doc(id)
